@@ -14,6 +14,10 @@ Bootstrap(app)
 def index():
     return render_template("index.html", year=year)
 
+@app.route("/cafes/<int:cafe>", methods=["POST", "GET"])
+def cafes(cafe):
+    return render_template("cafe_template.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

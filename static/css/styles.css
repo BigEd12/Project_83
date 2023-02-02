@@ -129,3 +129,49 @@ p {
     text-decoration: none;
 }
 
+/*-------------------- CAFÉS --------------------*/
+#cafes {
+    background-color: #0D0D0D;
+    padding: 5% 15%;
+    color: #F28F16;
+}
+
+.border-box {
+    border-width: 3px;
+    border-style: outset;
+    border-color: #F28F16;
+    border-radius: 16px;
+    padding: auto;
+    width: 75%;
+    margin-top: 3%;
+}
+
+
+#cafes img {
+    width: 75%;
+    border-radius: 5%;
+    padding-bottom: 5%;
+    text-align: center;
+}
+
+#cafes h1 {
+    padding: 1% 0;
+}
+
+#cafes a {
+    padding: 2% 0;
+    text-decoration: none;
+    color: #F28F16;
+}
+
+#cafes p {
+    padding: 2%;
+}
+
+.ratings {
+    width: 37.5%;
+    padding-top: 3%;
+    padding-left: 3%;
+    margin-top: 0;
+    margin-bottom: 8%;
+}
