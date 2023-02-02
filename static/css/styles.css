@@ -1,0 +1,131 @@
+h1 {
+    font-family: 'Josefin Slab', serif;
+    font-weight: 500;
+}
+
+h3 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+}
+
+p {
+    font-family: 'Hind', sans-serif;
+    font-weight: 400;
+}
+
+.navbar-dark {
+    background-color: #0D0D0D;
+    }
+
+#header {
+    font-family: 'Nunito', sans-serif;
+    color: #F2F2F2;
+}
+
+
+/*-------------------- LANDING --------------------*/
+#landing {
+    background-image: url("../images/bg2.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position; center bottom;
+    height: 800px;
+}
+
+#landing h1 {
+    font-size: 600%;
+    color: #F2F2F2;
+    letter-spacing: 50px;
+}
+
+.title-header {
+    margin: auto;
+    width: 70%;
+    text-align: center;
+    padding-top: 33%;
+}
+
+/*-------------------- FEATURES --------------------*/
+#features {
+    background-color: #0D0D0D;
+    padding: 5% 15%;
+    color: #F28F16;
+}
+
+.features-box {
+    padding: 5%;
+    text-align: center;
+}
+
+#features .fa-7x {
+    color: #D9751E;
+    padding-bottom: 5%;
+}
+
+#features .fa-7x:hover {
+    color: #8C5535;
+    padding-bottom: 5%;
+    transition: 1s;
+}
+
+.features-header {
+    padding: 5% 0;
+}
+
+/*-------------------- SELECTION --------------------*/
+
+#selection {
+    background-color: #8C5535;
+    text-align: center;
+}
+
+.carousel-image {
+    width: 50%;
+    padding-bottom: 3%;
+}
+
+.carousel-item {
+	padding: 7% 15%;
+}
+
+
+#selection p {
+    font-size: 120%;
+    padding-top: 1%;
+}
+
+/*-------------------- CALL TO ACTION --------------------*/
+#cta {
+    background-color: #0D0D0D;
+    padding: 5% 15%;
+    color: #F28F16;
+    text-align: center;
+}
+
+#cta h1 {
+    font-size: 400%;
+    font-weight: 700;
+    padding: 3% 0;
+}
+
+#cta .btn {
+    outline-color: #F28F16 !important;
+}
+
+#cta .btn:hover {
+    background-color: #F28F16 !important;
+    color: #0D0D0D;
+    transition: 0.6s;
+}
+
+/*-------------------- FOOTER --------------------*/
+#footer {
+    background-color: #8C5535;
+    text-align: center;
+}
+
+#footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
