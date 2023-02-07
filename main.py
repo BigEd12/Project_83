@@ -8,10 +8,12 @@ from wtforms.validators import DataRequired, URL
 from datetime import date
 import os
 from werkzeug.utils import secure_filename
+import random
 
 
 #---------------------- YEAR FOR COPYRIGHT ---------------------- #
 year = datetime.datetime.now().strftime('%Y')
+
 
 #---------------------- FLASK ----------------------#
 app = Flask(__name__)
@@ -48,8 +50,18 @@ class Cafes(db.Model):
     def to_dict(self):
         return {column.name: getattr(self, column.name) for column in self.__table__.columns}
 
+# with app.app_context():
+#    db.create_all()
+
+##---------------------- RANDOM CAFES ---------------------- ##
 with app.app_context():
-   db.create_all()
+    num_cafes = len(db.session.query(Cafes).all())
+
+    random_nums = random.sample(range(1, num_cafes + 1), 3)
+
+    random_1 = Cafes.query.get(random_nums[0])
+    random_2 = Cafes.query.get(random_nums[1])
+    random_3 = Cafes.query.get(random_nums[2])
 
 #---------------------- ADD CAFE ----------------------#
 class AddNewCafeForm(FlaskForm):
@@ -77,7 +89,12 @@ class AddNewCafeForm(FlaskForm):
 
 @app.route("/")
 def index():
-    return render_template("index.html", year=year)
+    return render_template("index.html",
+                           year=year,
+                           random_1=random_1,
+                           random_2=random_2,
+                           random_3=random_3
+                           )
 
 @app.route("/cafes/<int:cafe>", methods=["POST", "GET"])
 def cafes(cafe):
@@ -86,7 +103,12 @@ def cafes(cafe):
     photos = requested_cafe.image_paths
     sep_photos = photos.split(",")
 
-    return render_template("cafe_template.html", cafe=requested_cafe, photos=sep_photos, cafe_name=cafe_name)
+    return render_template("cafe_template.html",
+                           cafe=requested_cafe,
+                           photos=sep_photos,
+                           cafe_name=cafe_name,
+                           year=year
+                           )
 
 @app.route("/add", methods=["GET", "POST"])
 def add_cafe():
@@ -130,10 +152,14 @@ def add_cafe():
 
     return render_template("add_cafe.html", form=form, year=year)
 
-@app.route("/all_cafes")
+@app.route("/all_cafes", methods=["GET", "POST"])
 def all_cafes():
     cafes = Cafes.query.all()
-    return render_template("all_cafes.html", cafes=cafes)
+    return render_template("all_cafes.html",
+                           cafes=cafes,
+                           year=year
+                           )
+
 
 if __name__ == "__main__":
     app.run(debug=True)

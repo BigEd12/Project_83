@@ -1,33 +1,28 @@
 {% include "header.html" %}
 
 <body>
-    <div id="all-cafes">
-        <div class="row">
-            <div class="col-12">
-                <div class="card maps-card">
-                    <div class="card-body">
-                        <div class="container-fluid">
-                             <div class="main-map">
-                                <iframe src="https://www.google.com/maps/d/embed?mid=1eVzbwKD2Qd9uO2zkyCJUSPQ5yTJqIQM&ehbc=2E312F"></iframe>
-                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="all-cafes-header">
+        <div class="map-content">
+            <iframe src="https://www.google.com/maps/d/embed?mid=1eVzbwKD2Qd9uO2zkyCJUSPQ5yTJqIQM&ehbc=2E312F"></iframe>
         </div>
+    </section>
 
+    <section id="all-cafes-template">
         <div class="row">
             {% for cafe in cafes %}
-            <div class="col-md-4 col-12">
-                <div class="card">
-                    <div class="card-body">
-                        {{ cafe.name }}
+            <div class="col-md-4 col-12 cafe-columns">
+                <a href="{{ url_for('cafes', cafe=cafe.id) }}">
+                    <div class="card all-cafes-cards">
+                        <img src="{{ url_for('static', filename='images/cafes/' + cafe.name + '/1.jpg') }}" alt="{{ cafe.name }} image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ cafe.name }}</h5>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             {% endfor %}
         </div>
-    </div>
+    </section>
 
 </body>
 
