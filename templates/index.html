@@ -10,19 +10,20 @@
     <section id="features">
         <div class="row">
             <div class="features-box col-lg-4 col-md-12">
-                <i class="fa-solid fa-laptop fa-7x"></i>
+                <i class="fa-solid fa-mug-hot fa-7x"></i>
                 <h3 class="features-header">Amenities</h3>
-                <p class="features-para">Find out everything you need to know, before you go.</p>
+                <p class="features-para">From coffee shops to bars, find new places to work or study, based on your needs.</p>
+                <p class="features-para"></p>
             </div>
             <div class="features-box col-lg-4 col-md-12">
-                <i class="fa-solid fa-door-open fa-7x"></i>
-                <h3 class="features-header">Is It Open?</h3>
-                <p class="features-para">We take data from Google and the café's pages to find latest opening times, and how busy it is.</p>
+                <i class="fa-solid fa-info fa-7x"></i>
+                <h3 class="features-header">Need to know</h3>
+                <p class="features-para">We've included information on opening times, seating, power sockets, location, website and more.</p>
             </div>
             <div class="features-box col-lg-4 col-md-12">
                 <i class="fa-solid fa-wifi fa-7x"></i>
-                <h3 class="features-header">WiFi Strength</h3>
-                <p class="features-para">We personally test and upload internet speed tests for each café we recommend</p>
+                <h3 class="features-header">Wi-Fi Strength</h3>
+                <p class="features-para">Need Wi-Fi? We've checked everywhere listed, with up-to-date speeds listed if Wi-Fi is available.</p>
             </div>
         </div>
     </section>
@@ -39,7 +40,7 @@
                     <a href="{{ url_for('cafes', cafe=random_1.id) }}">
                         <img src="{{ url_for('static', filename='images/cafes/' + random_1.name + '/1.jpg') }}" class="carousel-image" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h1>{{ random_1.name }}</h1>
+                            <h3>{{ random_1.name }}</h3>
                         </div>
                     </a>
                 </div>
@@ -47,7 +48,7 @@
                     <a href="{{ url_for('cafes', cafe=random_2.id) }}">
                         <img src="{{ url_for('static', filename='images/cafes/' + random_2.name + '/1.jpg') }}" class="carousel-image" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h1>{{ random_2.name }}</h1>
+                            <h3>{{ random_2.name }}</h3>
                         </div>
                     </a>
                 </div>
@@ -55,7 +56,7 @@
                     <a href="{{ url_for('cafes', cafe=random_3.id) }}">
                         <img src="{{ url_for('static', filename='images/cafes/' + random_3.name + '/1.jpg') }}" class="carousel-image" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h1>{{ random_3.name }}</h1>
+                            <h3>{{ random_3.name }}</h3>
                         </div>
                     </a>
 

@@ -5,7 +5,8 @@ h1 {
 
 h3 {
     font-family: 'Nunito', sans-serif;
-    font-weight: 500;
+    font-weight: 200;
+    font-style: italic;
 }
 
 p {
@@ -49,6 +50,22 @@ a {
     padding-top: 33%;
 }
 
+@media (max-width: 768px) {
+
+	#landing {
+    height: 600px;
+    transition: 1s;
+    }
+
+    #landing h1 {
+    font-size: 400%;
+    transition: 1s;
+    letter-spacing: 40px;
+    }
+
+
+}
+
 /*-------------------- FEATURES --------------------*/
 #features {
     background-color: #0D0D0D;
@@ -83,7 +100,7 @@ a {
 
 .carousel-image {
     width: 50%;
-    padding-bottom: 3%;
+    border-radius: 5%;
 }
 
 .carousel-item {
@@ -94,6 +111,19 @@ a {
 #selection p {
     font-size: 120%;
     padding-top: 1%;
+}
+
+.carousel-caption {
+    padding-top: 0;
+}
+
+@media (max-width: 768px) {
+
+    .carousel-image {
+        width: 85%;
+        height: 180px;
+    }
+
 }
 
 /*-------------------- CALL TO ACTION --------------------*/
@@ -273,6 +303,7 @@ header.masthead .overlay {
     width: 1024px;
     border-radius: 5%;
     border-left: auto;
+    transition: 1s;
 }
 
 .cafe-columns {
@@ -286,3 +317,42 @@ header.masthead .overlay {
     text-align: center;
 }
 
+@media (max-width: 1270px) {
+
+    #all-cafes-header iframe {
+    height: 450px;
+    width: 846px;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    #all-cafes-header iframe {
+    height: 341px;
+    width: 655px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    #all-cafes-header iframe {
+    height: 285px;
+    width: 550px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    #all-cafes-header iframe {
+    height: 275px;
+    width: 498px;
+    }
+}
+
+@media (max-width: 538px) {
+
+    #all-cafes-header iframe {
+    height: 160px;
+    width: 300px;
+    }
+}
