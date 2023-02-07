@@ -1,0 +1,16 @@
+{% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+<body>
+    <section id="add-cafe">
+        <div class="row">
+            <div class="col-6 add-form">
+                <form method="post" enctype="multipart/form-data">
+                {{ wtf.quick_form(form, novalidate=True, button_map={'submit': 'primary'}) }}
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+    {% include "footer.html" %}

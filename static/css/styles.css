@@ -132,25 +132,13 @@ p {
 /*-------------------- CAFÉS --------------------*/
 #cafes {
     background-color: #0D0D0D;
-    padding: 5% 15%;
-    color: #F28F16;
+    padding: 3% 15%;
+    color: #0D0D0D;
 }
-
-.border-box {
-    border-width: 3px;
-    border-style: outset;
-    border-color: #F28F16;
-    border-radius: 16px;
-    padding: auto;
-    width: 75%;
-    margin-top: 3%;
-}
-
 
 #cafes img {
-    width: 75%;
+    width: 100%;
     border-radius: 5%;
-    padding-bottom: 5%;
     text-align: center;
 }
 
@@ -168,10 +156,93 @@ p {
     padding: 2%;
 }
 
-.ratings {
-    width: 37.5%;
-    padding-top: 3%;
-    padding-left: 3%;
-    margin-top: 0;
-    margin-bottom: 8%;
+
+
+.card {
+    background-color: #8C5535;
+    color: #0D0D0D;
+    padding: 2%;
+    height: 300px;
+    width: 422px;
+    margin-bottom: 4%;
+}
+
+header.masthead {
+  background: no-repeat center bottom;
+  background-color: #868e96;
+  background-attachment: scroll;
+  position: relative;
+  background-size: cover;
+}
+
+header.masthead .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #212529;
+  opacity: 0.3;
+}
+
+.cafe-name {
+    padding: 15% 0 15%;;
+    color: #F2F2F2 !important;
+}
+
+.cafe-name h1 {
+    font-size: 350% !important;
+}
+
+.personal {
+    font-weight: 200;
+    font-style: italic;
+}
+
+.personal-check {
+    margin-top: 7%;
+    text-align: center;
+    color: #F28F16;
+}
+
+.map-responsive iframe{
+    left: 2%;
+    top: 2.5%;
+    height: 281px;
+    width: 403px;
+    position:absolute;
+    border-radius: 5%;
+}
+
+.carousel-inner {
+    height: 281px;
+}
+
+.carousel-item img {
+    left: 0;
+    top: 0;
+
+    position:absolute;
+    border-radius: 5%;
+}
+/*-------------------- ADD CAFÉ --------------------*/
+#add-cafe {
+    padding: 3%;
+    background-color: #8C5535;
+    color: #F2F2F2
+}
+
+/*-------------------- ALL CAFÉS --------------------*/
+.maps-card {
+    height: 480px;
+    width: 640px;
+}
+
+.main-map iframe {
+    left: 2%;
+    top: 2.5%;
+    height: 470px;
+    width: 630px;
+    position:absolute;
+    border-radius: 5%;
 }

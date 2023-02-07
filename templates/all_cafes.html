@@ -1,0 +1,34 @@
+{% include "header.html" %}
+
+<body>
+    <div id="all-cafes">
+        <div class="row">
+            <div class="col-12">
+                <div class="card maps-card">
+                    <div class="card-body">
+                        <div class="container-fluid">
+                             <div class="main-map">
+                                <iframe src="https://www.google.com/maps/d/embed?mid=1eVzbwKD2Qd9uO2zkyCJUSPQ5yTJqIQM&ehbc=2E312F"></iframe>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for cafe in cafes %}
+            <div class="col-md-4 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        {{ cafe.name }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+
+{% include "footer.html" %}

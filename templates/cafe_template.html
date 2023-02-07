@@ -1,35 +1,164 @@
 {% include "header.html" %}
 
+<!---------- HEADER---------->
+    <header class="masthead" style="background-image: url('{{ url_for('static', filename='images/cafes/' + cafe_name + '/1.jpg') }}')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 cafe-name">
+                    <div>
+                        <h1>{{ cafe.name }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </header>
 <body>
   <section id="cafes">
       <div class="row">
           <div class="col-md-6 col-12">
-              <a href="https://www.starbucks.es/store-locator?types=starbucks&latLng=37.98854700000001%2C-1.1320029999999903&zoom=15&store=50300-260427&storeDetail=50300-260427">
-                  <h1>Starbucks</h1>
+              <a href={{ cafe.website }}>
+                  <h1>{{ cafe.name }}</h1>
               </a>
-              <a href="https://www.google.com/maps/place/Starbucks/@37.9871512,-1.1340927,17z/data=!3m1!4b1!4m5!3m4!1s0xd63821c3eacb9b1:0x4f18756381a2bfd!8m2!3d37.987147!4d-1.131904">Gran Vía del Escultor Francisco Salzillo, 42, 30005 Murcia</a>
-              <div class="border-box">
-                  <p>WiFi Speed: Mb p/s</p>
-                  <p>Seating Range: </p>
-                  <p>Coffee Price: €</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-4 col-12">
+              <div class="card">
+                  <div class="card-body">
+                      <p>WiFi Download Speed: {{ cafe.wifi_down }}Mb p/s</p>
+                      <p>WiFi Upload Speed: {{ cafe.wifi_up }}Mb p/s</p>
+                      <p>Seating Range: {{ cafe.seating_range }}</p>
+                      <p>Coffee Price: €{{ cafe.coffee_price }}</p>
+                  </div>
               </div>
           </div>
-          <div class="col-md-6 col-12">
-              <img src="{{ url_for('static', filename='images/cafe_img.jpg') }}">
+          <div class="col-md-4 col-12">
+              <div class="card">
+                  <div class="card-body">
+                      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                          <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                  <img src="/static/images/cafes/{{cafe.name}}/1.jpg" class="d-block w-100" alt="...">
+                              </div>
+
+                              {% for image in photos %}
+                              <div class="carousel-item">
+                                  <img src="/static/images/cafes/{{cafe_name}}/{{image}}" class="d-block w-100" alt="Image of {{cafe.name}}">
+                              </div>
+                              {% endfor %}
+                          </div>
+                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                          </button>
+                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4 col-12">
+              <div class="card">
+                  <div class="card-body">
+                      <h2>Ratings: </h2>
+                      <p>WiFi: {{ cafe.wifi_rating }}</p>
+                      <p>Power: {{ cafe.power_rating }}</p>
+                      <p>Seating: {{ cafe.seating_rating }}</p>
+                      <p>Coffee: {{ cafe.coffee_rating }}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-4 col-12">
+              <div class="card">
+                  <div class="card-body">
+                      <h2>Additional comments:</h2>
+                      <p> {{ cafe.comments }}</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-md-4 col-12">
+              <div class="card">
+                  <div class="card-body">
+                      <div class="container-fluid">
+                          <div class="map-responsive">
+                              <iframe src="{{ cafe.location }}" frameborder="0" style="border:0" allowfullscreen></iframe>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-md-4 col-12">
+              <div class="card">
+                  <div class="card-body">
+                      <table class="table table-sm">
+                          <thead>
+                              <tr>
+                                  <th scope="col">Day</th>
+                                  <th scope="col">Opens</th>
+                                  <th scope="col">Closes</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <th scope="row">Monday</th>
+                                  <td>{{ cafe.opens_wd }}</td>
+                                  <td>{{ cafe.closes_wd }}</td>
+                              </tr>
+                              <tr>
+                                  <th scope="row">Tuesday</th>
+                                  <td>{{ cafe.opens_wd }}</td>
+                                  <td>{{ cafe.closes_wd }}</td>
+                              </tr>
+                              <tr>
+                                  <th scope="row">Wednesday</th>
+                                  <td>{{ cafe.opens_wd }}</td>
+                                  <td>{{ cafe.closes_wd }}</td>
+                              </tr>
+                              <tr>
+                                  <th scope="row">Thursday</th>
+                                  <td>{{ cafe.opens_wd }}</td>
+                                  <td>{{ cafe.closes_wd }}</td>
+                              </tr>
+                              <tr>
+                                  <th scope="row">Friday</th>
+                                  <td>{{ cafe.opens_wd }}</td>
+                                  <td>{{ cafe.closes_wd }}</td>
+                              </tr>
+                              <tr>
+                                  <th scope="row">Saturday</th>
+                                  <td>{{ cafe.opens_we }}</td>
+                                  <td>{{ cafe.closes_we }}</td>
+                              </tr>
+                              <tr>
+                                  <th scope="row">Sunday</th>
+                                  <td>{{ cafe.opens_we }}</td>
+                                  <td>{{ cafe.closes_we }}</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
           </div>
       </div>
 
       <div class="row">
-          <div class="col-md-6 col-12">
-              <img src="https://picsum.photos/400/300">
-          </div>
-          <div class="col-md-6 col-12 border-box ratings">
-              <p>WiFi: 💪</p>
-              <p>Power: 🔌</p>
-              <p>Seats: 💺</p>
-              <p>Coffee: ☕</p>
+          <div class="col-12 personal-check">
+              <h5>How do we know?</h5>
+              <h5 class="personal">We personally review every café.</h5>
+              <br>
+              <h5>We were last here on: {{ cafe.review_date }}</h5>
           </div>
       </div>
+
+
+
   </section>
 
 
