@@ -10,15 +10,29 @@
     <section id="all-cafes-template">
         <div class="row">
             {% for cafe in cafes %}
-            <div class="col-md-4 col-12 cafe-columns">
-                <a href="{{ url_for('cafes', cafe=cafe.id) }}">
-                    <div class="card all-cafes-cards">
-                        <img src="{{ url_for('static', filename='images/cafes/' + cafe.name + '/1.jpg') }}" alt="{{ cafe.name }} image">
+            <div class="col-12 col-md-4">
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-4">
+                            <a href=" {{ url_for('cafes', cafe=cafe.id) }}">
+                            <img src="{{ url_for('static', filename='images/cafes/' + cafe.name + '/' + cafe.logo_image_path) }}" class="img-fluid rounded-start" alt="...">
+                            </a>
+                        </div>
+                    <div class="col-8">
                         <div class="card-body">
+                            <a href=" {{ url_for('cafes', cafe=cafe.id) }}">
                             <h5 class="card-title">{{ cafe.name }}</h5>
+                            </a>
+                            <p class="card-text">{{ cafe.address }}</p>
+                            <p class="card-text">{{ cafe.description }}</p>
+                            <p class="card-text"><small class="text-muted"><i class="fa-solid fa-mug-hot"></i> €{{ cafe.coffee_price }}</small></p>
+                            {% if cafe.wifi_down %}
+                            <p class="card-text"><small class="text-muted"><i class="fa-solid fa-wifi"></i> Wi-Fi available</small></p>
+                            {% endif %}
                         </div>
                     </div>
-                </a>
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>

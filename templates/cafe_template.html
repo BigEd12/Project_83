@@ -16,14 +16,14 @@
 <body>
   <section id="cafes">
       <div class="row">
-          <div class="col-md-6 col-12">
+          <div class="col-lg-6 col-12">
               <a href={{ cafe.website }}>
                   <h1>{{ cafe.name }}</h1>
               </a>
           </div>
       </div>
       <div class="row">
-          <div class="col-md-4 col-12">
+          <div class="col-lg-4 col-12">
               <div class="card">
                   <div class="card-body">
                       <p>WiFi Download Speed: {{ cafe.wifi_down }}Mb p/s</p>
@@ -33,7 +33,7 @@
                   </div>
               </div>
           </div>
-          <div class="col-md-4 col-12">
+          <div class="col-lg-4 col-12">
               <div class="card">
                   <div class="card-body">
                       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -60,7 +60,7 @@
                   </div>
               </div>
           </div>
-          <div class="col-md-4 col-12">
+          <div class="col-lg-4 col-12">
               <div class="card">
                   <div class="card-body">
                       <h2>Ratings: </h2>
@@ -73,7 +73,7 @@
           </div>
       </div>
       <div class="row">
-          <div class="col-md-4 col-12">
+          <div class="col-lg-4 col-12">
               <div class="card">
                   <div class="card-body">
                       <h2>Additional comments:</h2>
@@ -82,17 +82,17 @@
               </div>
           </div>
 
-          <div class="col-md-4 col-12">
-              <div class="card">
+          <div class="col-lg-4 col-12">
+              <div class="card maps-card">
                   <div class="card-body">
-                      <div class="container-fluid">
+                      <div class="container-fluid cafe-map">
                               <iframe src="{{ cafe.location }}" frameborder="0" style="border:0" allowfullscreen></iframe>
                       </div>
                   </div>
               </div>
           </div>
 
-          <div class="col-md-4 col-12">
+          <div class="col-lg-4 col-12">
               <div class="card">
                   <div class="card-body">
                       <table class="table table-sm">
@@ -106,38 +106,38 @@
                           <tbody>
                               <tr>
                                   <th scope="row">Monday</th>
-                                  <td>{{ cafe.opens_wd }}</td>
-                                  <td>{{ cafe.closes_wd }}</td>
+                                  <td>{{ cafe.mon_open }}</td>
+                                  <td>{{ cafe.mon_close }}</td>
                               </tr>
                               <tr>
                                   <th scope="row">Tuesday</th>
-                                  <td>{{ cafe.opens_wd }}</td>
-                                  <td>{{ cafe.closes_wd }}</td>
+                                  <td>{{ cafe.tue_open }}</td>
+                                  <td>{{ cafe.tue_close }}</td>
                               </tr>
                               <tr>
                                   <th scope="row">Wednesday</th>
-                                  <td>{{ cafe.opens_wd }}</td>
-                                  <td>{{ cafe.closes_wd }}</td>
+                                  <td>{{ cafe.wed_open }}</td>
+                                  <td>{{ cafe.wed_close }}</td>
                               </tr>
                               <tr>
                                   <th scope="row">Thursday</th>
-                                  <td>{{ cafe.opens_wd }}</td>
-                                  <td>{{ cafe.closes_wd }}</td>
+                                  <td>{{ cafe.thu_open }}</td>
+                                  <td>{{ cafe.thu_close }}</td>
                               </tr>
                               <tr>
                                   <th scope="row">Friday</th>
-                                  <td>{{ cafe.opens_wd }}</td>
-                                  <td>{{ cafe.closes_wd }}</td>
+                                  <td>{{ cafe.fri_open }}</td>
+                                  <td>{{ cafe.fri_close }}</td>
                               </tr>
                               <tr>
                                   <th scope="row">Saturday</th>
-                                  <td>{{ cafe.opens_we }}</td>
-                                  <td>{{ cafe.closes_we }}</td>
+                                  <td>{{ cafe.sat_open }}</td>
+                                  <td>{{ cafe.sat_close }}</td>
                               </tr>
                               <tr>
                                   <th scope="row">Sunday</th>
-                                  <td>{{ cafe.opens_we }}</td>
-                                  <td>{{ cafe.closes_we }}</td>
+                                  <td>{{ cafe.sun_open }}</td>
+                                  <td>{{ cafe.sun_close }}</td>
                               </tr>
                           </tbody>
                       </table>
