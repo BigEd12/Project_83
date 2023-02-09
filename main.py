@@ -119,11 +119,12 @@ class AddNewCafeForm(FlaskForm):
 
 @app.route("/")
 def index():
+    cafes = Cafes.query.all()
+    cafe_1 = Cafes.query.get(1)
     return render_template("index.html",
                            year=year,
-                           random_1=random_1,
-                           random_2=random_2,
-                           random_3=random_3
+                           cafe_1=cafe_1,
+                           cafes=cafes
                            )
 
 @app.route("/cafes/<int:cafe>", methods=["POST", "GET"])
