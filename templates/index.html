@@ -29,7 +29,7 @@
     </section>
 
     <section id="selection">
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -37,30 +37,25 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="10000">
-                    <a href="{{ url_for('cafes', cafe=random_1.id) }}">
-                        <img src="{{ url_for('static', filename='images/cafes/' + random_1.name + '/1.jpg') }}" class="carousel-image" alt="...">
+                    <a href="{{ url_for('cafes', cafe=cafe_1.id) }}">
+                        <img src="{{ url_for('static', filename='images/cafes/' + cafe_1.name + '/' + cafe_1.logo_image_path) }}" class="carousel-image" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h3>{{ random_1.name }}</h3>
+                            <h3>{{ cafe_1.name }}</h3>
                         </div>
                     </a>
                 </div>
+                {% for cafe in cafes %}
+                {% if cafe.id != 1 %}
                 <div class="carousel-item" data-bs-interval="10000">
-                    <a href="{{ url_for('cafes', cafe=random_2.id) }}">
-                        <img src="{{ url_for('static', filename='images/cafes/' + random_2.name + '/1.jpg') }}" class="carousel-image" alt="...">
+                    <a href="{{ url_for('cafes', cafe=cafe.id) }}">
+                        <img src="{{ url_for('static', filename='images/cafes/' + cafe.name + '/' + cafe.logo_image_path) }}" class="carousel-image" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h3>{{ random_2.name }}</h3>
+                            <h3>{{ cafe.name }}</h3>
                         </div>
                     </a>
                 </div>
-                <div class="carousel-item" data-bs-interval="10000">
-                    <a href="{{ url_for('cafes', cafe=random_3.id) }}">
-                        <img src="{{ url_for('static', filename='images/cafes/' + random_3.name + '/1.jpg') }}" class="carousel-image" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h3>{{ random_3.name }}</h3>
-                        </div>
-                    </a>
-
-                </div>
+                {% endif %}
+                {% endfor %}
 
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">

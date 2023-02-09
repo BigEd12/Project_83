@@ -10,7 +10,7 @@
     <section id="all-cafes-template">
         <div class="row">
             {% for cafe in cafes %}
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-lg-4 col-md-6">
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-4">
@@ -20,14 +20,31 @@
                         </div>
                     <div class="col-8">
                         <div class="card-body">
-                            <a href=" {{ url_for('cafes', cafe=cafe.id) }}">
+                            <a href="{{ url_for('cafes', cafe=cafe.id) }}">
                             <h5 class="card-title">{{ cafe.name }}</h5>
-                            </a>
                             <p class="card-text">{{ cafe.address }}</p>
                             <p class="card-text">{{ cafe.description }}</p>
+                            <hr>
+                            {% if cafe.open_status == "Open" %}
+                            <p class="card-text open" style="color: green"><small>{{ cafe.open_status }} now</small></p>
+                            {% elif cafe.open_status == "Closed" %}
+                            <p class="card-text open" style="color: red"><small>{{ cafe.open_status }} now</small></p>
+                            {% endif %}
+                            <hr>
                             <p class="card-text"><small class="text-muted"><i class="fa-solid fa-mug-hot"></i> €{{ cafe.coffee_price }}</small></p>
                             {% if cafe.wifi_down %}
-                            <p class="card-text"><small class="text-muted"><i class="fa-solid fa-wifi"></i> Wi-Fi available</small></p>
+                            <p class="card-text"><small class="text-muted"><i class="fa-solid fa-wifi"></i> Wi-Fi available - {{ cafe.wifi_down}} Mb p/s</small></p>
+                            {% endif %}
+                            <hr>
+                            </a>
+                            {% if cafe.instagram %}
+                            <a href="{{ cafe.instagram }}" class="card-text"><small class="text-muted"><i class="fa-brands fa-instagram"></i></small></a>
+                            {% endif %}
+                            {% if cafe.twitter %}
+                            <a href="{{ cafe.twitter }}" class="card-text"><small class="text-muted"><i class="fa-brands fa-square-twitter"></i></small></a>
+                            {% endif %}
+                            {% if cafe.facebook %}
+                            <a href="{{ cafe.facebook }}" class="card-text"><small class="text-muted"><i class="fa-brands fa-square-facebook"></i></small></a>
                             {% endif %}
                         </div>
                     </div>
