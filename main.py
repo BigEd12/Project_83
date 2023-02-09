@@ -8,7 +8,8 @@ from wtforms.validators import DataRequired, URL
 from datetime import date
 import os
 from werkzeug.utils import secure_filename
-import random
+from textwrap import wrap
+
 
 
 #---------------------- YEAR FOR COPYRIGHT ---------------------- #
@@ -37,20 +38,20 @@ class Cafes(db.Model):
     wifi_down = db.Column(db.String(250))
     seating_range = db.Column(db.String(20), nullable=False)
     coffee_price = db.Column(db.String(20), nullable=False)
-    mon_open = db.Column(db.String(20), nullable=False)
-    mon_close = db.Column(db.String(20), nullable=False)
-    tue_open = db.Column(db.String(20), nullable=False)
-    tue_close = db.Column(db.String(20), nullable=False)
-    wed_open = db.Column(db.String(20), nullable=False)
-    wed_close = db.Column(db.String(20), nullable=False)
-    thu_open = db.Column(db.String(20), nullable=False)
-    thu_close = db.Column(db.String(20), nullable=False)
-    fri_open = db.Column(db.String(20), nullable=False)
-    fri_close = db.Column(db.String(20), nullable=False)
-    sat_open = db.Column(db.String(20), nullable=False)
-    sat_close = db.Column(db.String(20), nullable=False)
-    sun_open = db.Column(db.String(20), nullable=False)
-    sun_close = db.Column(db.String(20), nullable=False)
+    mon_open = db.Column(db.String(20))
+    mon_close = db.Column(db.String(20))
+    tue_open = db.Column(db.String(20))
+    tue_close = db.Column(db.String(20))
+    wed_open = db.Column(db.String(20))
+    wed_close = db.Column(db.String(20))
+    thu_open = db.Column(db.String(20))
+    thu_close = db.Column(db.String(20))
+    fri_open = db.Column(db.String(20))
+    fri_close = db.Column(db.String(20))
+    sat_open = db.Column(db.String(20))
+    sat_close = db.Column(db.String(20))
+    sun_open = db.Column(db.String(20))
+    sun_close = db.Column(db.String(20))
     wifi_rating = db.Column(db.String(20), nullable=False)
     power_rating = db.Column(db.String(20), nullable=False)
     seating_rating = db.Column(db.String(20), nullable=False)
@@ -62,21 +63,22 @@ class Cafes(db.Model):
     facebook = db.Column(db.String(500))
     instagram = db.Column(db.String(500))
     twitter = db.Column(db.String(500))
+    open_status = db.Column(db.String(25))
     def to_dict(self):
         return {column.name: getattr(self, column.name) for column in self.__table__.columns}
 
-# with app.app_context():
-#    db.create_all()
+with app.app_context():
+    db.create_all()
 
 ##---------------------- RANDOM CAFES ---------------------- ##
-with app.app_context():
-    num_cafes = len(db.session.query(Cafes).all())
-
-    random_nums = random.sample(range(1, num_cafes + 1), 3)
-
-    random_1 = Cafes.query.get(random_nums[0])
-    random_2 = Cafes.query.get(random_nums[1])
-    random_3 = Cafes.query.get(random_nums[2])
+# with app.app_context():
+#     num_cafes = len(db.session.query(Cafes).all())
+#
+#     random_nums = random.sample(range(1, num_cafes + 1), 3)
+#
+#     random_1 = Cafes.query.get(random_nums[0])
+#     random_2 = Cafes.query.get(random_nums[1])
+#     random_3 = Cafes.query.get(random_nums[2])
 
 #---------------------- ADD CAFE ----------------------#
 class AddNewCafeForm(FlaskForm):
@@ -115,15 +117,60 @@ class AddNewCafeForm(FlaskForm):
     submit = SubmitField("Submit")
 
 
+#---------------------- IS IT OPEN? ----------------------#
+def time_value(time):
+    split = time.split(":")
+    if len(split) == 2:
+        hour = split[0]
+        min = split[1]
+        time_value = int((int(hour) * 60) + int(min))
+        return time_value
+    elif len(split) != 2:
+        split = time.split(":")
+        new_split = split[1].split("-")
+        hour_1 = split[0]
+        hour_2 = new_split[1]
+        min_1 = new_split[0]
+        min_2 = split[2]
+        value_1 = int((int(hour_1) * 60) + int(min_1))
+        value_2 = int((int(hour_2) * 60) + int(min_2))
+        return [value_1, value_2]
 
+
+def is_it_open(open_time, close_time, current_time):
+    if not open_time:
+        return "Closed"
+    elif not close_time:
+        return "Closed"
+    elif len(open_time) == 5:
+        if time_value(close_time) < 120:
+            if time_value(current_time) > time_value(open_time) and time_value(current_time) < (time_value(close_time) + 1440):
+                return "Open"
+            else:
+                return "Closed"
+        else:
+            if time_value(current_time) > time_value(open_time) and time_value(current_time) < (time_value(close_time)):
+                return "Open"
+            else:
+                return "Closed"
+    else:
+        am_hours = time_value(open_time)
+        if time_value(current_time) > am_hours[0] and time_value(current_time) < am_hours[1]:
+            return "Open"
+        pm_hours = time_value(close_time)
+        if time_value(current_time) > pm_hours[0] and time_value(current_time) < pm_hours[1]:
+            return "Open"
+        else:
+            return "Closed"
 
 @app.route("/")
 def index():
+    cafes = Cafes.query.all()
+    cafe_1 = Cafes.query.get(1)
     return render_template("index.html",
                            year=year,
-                           random_1=random_1,
-                           random_2=random_2,
-                           random_3=random_3
+                           cafe_1=cafe_1,
+                           cafes=cafes
                            )
 
 @app.route("/cafes/<int:cafe>", methods=["POST", "GET"])
@@ -208,10 +255,20 @@ def add_cafe():
 @app.route("/all_cafes", methods=["GET", "POST"])
 def all_cafes():
     cafes = Cafes.query.all()
+    now = datetime.datetime.now()
+    day_today = now.strftime("%A")
+    time_now = now.strftime("%H:%M")
+    day = wrap(day_today.lower(), 3)[0]
+    for cafe in cafes:
+        open_hour = getattr(cafe, f"{day}_open")
+        close_hour = getattr(cafe, f"{day}_close")
+        cafe.open_status = is_it_open(open_hour, close_hour, time_now)
+
     return render_template("all_cafes.html",
                            cafes=cafes,
                            year=year
                            )
+
 
 
 if __name__ == "__main__":

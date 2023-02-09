@@ -96,10 +96,12 @@ a {
 #selection {
     background-color: #8C5535;
     text-align: center;
+    min-height: 300px;
 }
 
 .carousel-image {
-    width: 50%;
+    width: 25%;
+    height: 25%;
     border-radius: 5%;
 }
 
@@ -113,8 +115,9 @@ a {
     padding-top: 1%;
 }
 
-.carousel-caption {
-    padding-top: 0;
+#selection .carousel-caption {
+    margin-top: 2%;
+    bottom: 15px;
 }
 
 @media (max-width: 768px) {
@@ -268,6 +271,10 @@ header.masthead .overlay {
     border-radius: 5%;
 }
 
+#cafes img:hover{
+   transform: scale(2);
+   transition: 2s;
+ }
 
 /*-------------------- ADD CAFÉ --------------------*/
 #add-cafe {
@@ -285,9 +292,19 @@ header.masthead .overlay {
 #all-cafes-template {
     background-color: #0D0D0D;
     padding: 3%;
+    color: #0D0D0D;
 }
 
 #all-cafes-template h5 {
+    color: #0D0D0D;
+}
+
+#all-cafes-template p {
+    color: #0D0D0D;
+}
+
+#all-cafes-template hr {
+    margin-top: 1px;
     color: #0D0D0D;
 }
 
@@ -295,6 +312,22 @@ header.masthead .overlay {
     border-radius: 5%;
     max-height: 175px;
     max-width: 175px;
+}
+
+@media (min-width: 768px) {
+
+    #all-cafes-template img{
+    border-radius: 5%;
+    width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+
+    #all-cafes-template img{
+    border-radius: 5%;
+    width: 90%;
+    }
 }
 
 #all-cafes-template .card{
@@ -307,6 +340,7 @@ header.masthead .overlay {
 #all-cafes-template .card-body{
     margin-left: 1%;
 }
+
 
 
 #all-cafes-header iframe {

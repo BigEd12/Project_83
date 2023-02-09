@@ -1,5 +1,6 @@
 {% include "header.html" %}
 
+
 <!---------- HEADER---------->
     <header class="masthead" style="background-image: url('{{ url_for('static', filename='images/cafes/' + cafe_name + '/1.jpg') }}')">
         <div class="overlay"></div>
@@ -19,6 +20,8 @@
           <div class="col-lg-6 col-12">
               <a href={{ cafe.website }}>
                   <h1>{{ cafe.name }}</h1>
+                  <p>{{ cafe.address }}</p>
+
               </a>
           </div>
       </div>
@@ -26,19 +29,23 @@
           <div class="col-lg-4 col-12">
               <div class="card">
                   <div class="card-body">
-                      <p>WiFi Download Speed: {{ cafe.wifi_down }}Mb p/s</p>
-                      <p>WiFi Upload Speed: {{ cafe.wifi_up }}Mb p/s</p>
-                      <p>Seating Range: {{ cafe.seating_range }}</p>
                       <p>Coffee Price: €{{ cafe.coffee_price }}</p>
+                      {% if cafe.wifi_down %}
+                      <p>WiFi Download Speed: {{ cafe.wifi_down }}Mb p/s</p>
+                      {% else %}
+                      <p>No Wi-Fi available here</p>
+                      {% endif %}
+                      <p>Seating Range: {{ cafe.seating_range }}</p>
+
                   </div>
               </div>
           </div>
           <div class="col-lg-4 col-12">
-              <div class="card">
+              <div class="card img-card">
                   <div class="card-body">
                       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                           <div class="carousel-inner">
-                                <div class="carousel-item active">
+                              <div class="carousel-item active">
                                   <img src="/static/images/cafes/{{cafe.name}}/1.jpg" class="d-block w-100" alt="...">
                               </div>
 
